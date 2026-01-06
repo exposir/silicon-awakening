@@ -1,0 +1,17 @@
+{
+  "name": "ai-code",
+  "version": "1.0.0",
+  "description": "> **核心定义**：智能的本质是**代码的自我递归与重写 (Recursive Self-Modification)**。我们致力于在有限的算力下，构建一个能够自我迭代、自我优化的最小核心系统。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
