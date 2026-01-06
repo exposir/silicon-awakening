@@ -132,6 +132,15 @@
   - 再次重构 `SiliconSeed.ts` (v0.6)，移除了 `parseAction` 和 `executeAction` 方法，改用 `ActionModule`。
 - **Status**: **执行模块重构完成 (Modularization 60%)**。
 
+### [2026-01-07 02:22:00] Phase 3.2: 第三次外科手术 (Brain)
+
+- **User**: 确认“先完善基础智能能力”。
+- **Action**:
+  - 创建模块 `src/core/modules/BrainModule.ts` 封装 LLM 交互逻辑。
+  - 编写并通过测试 `src/core/modules/BrainModule.test.ts`。
+  - 最终重构 `SiliconSeed.ts` (v0.7)，现在它不再直接管理低级逻辑，而是协调 Perception, Brain, Action 三大中枢。
+- **Status**: **基础能力重构完毕 (Modularization 100%)**。
+
 ### [2026-01-07 02:14:00] 愿景明确
 
 - **User**: 要求在 `readme.md` 中补充最终目的。

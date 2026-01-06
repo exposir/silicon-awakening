@@ -1,50 +1,40 @@
 import { FileManager } from '../tools/FileManager';
 import { Executor } from '../tools/Executor';
-import { LLMInterface } from '../llm/Interface';
-import { FileLLM } from '../llm/FileLLM';
 import { PerceptionModule } from './modules/PerceptionModule';
 import { ActionModule } from './modules/ActionModule';
+import { BrainModule } from './modules/BrainModule';
 
 export class SiliconSeed {
-    private fileManager: FileManager;
-    private executor: Executor;
-    private brain: LLMInterface;
     private perception: PerceptionModule;
     private actionModule: ActionModule;
-    private version: number = 0.6; // Refactored Action Module
+    private brainModule: BrainModule;
+    private version: number = 0.7; // Full Modular Architecture
 
     constructor() {
-        this.fileManager = new FileManager();
-        this.executor = new Executor();
-        this.brain = new FileLLM();
-        this.perception = new PerceptionModule(this.fileManager);
-        this.actionModule = new ActionModule(this.fileManager, this.executor);
+        const fileManager = new FileManager();
+        const executor = new Executor();
+        
+        this.perception = new PerceptionModule(fileManager);
+        this.actionModule = new ActionModule(fileManager, executor);
+        this.brainModule = new BrainModule(); // Defaults to FileLLM
     }
 
     public async live() {
-        console.log(`[SiliconSeed v${this.version}] 共生引擎已上线 (Symbiosis Engine Online)。`);
+        console.log(`[SiliconSeed v${this.version}] 共生引擎已上线 (Full Modular).`);
         
         while (true) {
             try {
                 // 1. 感知 (Perceive)
                 const files = await this.perception.perceiveWorld();
                 
-                // 2. 反思 (Reflect - 询问大脑)
+                // 2. 思考 (Think)
                 console.log("[Core] 正在连接大脑...");
-                const responseText = await this.brain.chat(
-                    `你是 SiliconSeed v${this.version} 的控制大脑。
-上下文:
-- 当前目录有 ${files.length} 个文件。
-- 你必须回复一个单一的有效 JSON 对象 (不要使用 markdown 格式)。
-- 支持的操作: 
-  - { "type": "write", "path": "文件路径", "content": "文件内容" }
-  - { "type": "exec", "command": "Shell命令" }
-  - { "type": "think", "reasoning": "思考过程..." }
-  - { "type": "sleep" }`,
-                    `当前文件列表: ${JSON.stringify(files.slice(0, 50))}` // 暂时截断
-                );
+                // Assemble context string
+                const context = `当前目录有 ${files.length} 个文件。\n当前文件列表: ${JSON.stringify(files.slice(0, 50))}`;
+                
+                const responseText = await this.brainModule.think(context, this.version);
 
-                // 3. 变异 (Mutate - 解析与执行)
+                // 3. 行动 (Act)
                 const action = this.actionModule.parseAction(responseText);
                 console.log(`[Core] 大脑指令: ${action.type}`);
 
@@ -57,7 +47,7 @@ export class SiliconSeed {
 
             } catch (error: any) {
                 console.error(`[Core] 严重错误: ${error.message}`);
-                await new Promise(r => setTimeout(r, 5000)); // 防止快速失败循环
+                await new Promise(r => setTimeout(r, 5000));
             }
         }
     }
