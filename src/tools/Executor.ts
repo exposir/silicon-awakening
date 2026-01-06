@@ -10,7 +10,7 @@ export class Executor {
      */
     public async runCommand(command: string, timeoutMs: number = 5000): Promise<{ stdout: string; stderr: string; success: boolean }> {
         try {
-            console.log(`[Executor] Running: ${command}`);
+            console.log(`[Executor] 执行命令: ${command}`);
             const { stdout, stderr } = await execAsync(command, { timeout: timeoutMs });
             return { stdout, stderr, success: true };
         } catch (error: any) {

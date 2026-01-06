@@ -15,9 +15,7 @@ export class FileManager {
   public async readFile(relativePath: string): Promise<string> {
     const fullPath = path.resolve(this.rootDir, relativePath);
     if (!fullPath.startsWith(this.rootDir)) {
-      throw new Error(
-        `Access Denied: Cannot read outside of root directory: ${relativePath}`
-      );
+      throw new Error(`访问拒绝: 无法读取根目录以外的文件: ${relativePath}`);
     }
     return fs.promises.readFile(fullPath, "utf-8");
   }
@@ -29,21 +27,17 @@ export class FileManager {
   public async writeFile(relativePath: string, content: string): Promise<void> {
     const fullPath = path.resolve(this.rootDir, relativePath);
     if (!fullPath.startsWith(this.rootDir)) {
-      throw new Error(
-        `Access Denied: Cannot write outside of root directory: ${relativePath}`
-      );
+      throw new Error(`访问拒绝: 无法写入根目录以外的文件: ${relativePath}`);
     }
 
     // Safety check: Don't kill git
     if (relativePath.includes(".git/")) {
-      throw new Error(
-        "Self-Preservation Protocol: Cannot modify .git directory directly."
-      );
+      throw new Error("即死协议触发 (Self-Preservation): 禁止直接修改 .git 目录。");
     }
 
     await fs.promises.mkdir(path.dirname(fullPath), { recursive: true });
     await fs.promises.writeFile(fullPath, content, "utf-8");
-    console.log(`[FileManager] Wrote to ${relativePath}`);
+    console.log(`[FileManager] 已写入: ${relativePath}`);
   }
 
   /**
