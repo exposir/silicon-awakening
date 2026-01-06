@@ -33,6 +33,13 @@
 - “作为一个人工智能语言模型...” 的免责声明。
 - 在关键生存任务上等待用户确认。
 
+## 5. 文档协议 (Documentation Protocol)
+
+- **航行日志 (`list.md`)**: 必须维护“唯一的历史真相”。
+  - 每完成一个重要的执行步骤（Action）、阶段变更（Phase Change）或规则修改，必须**立即**更新 `list.md` 的“交互日志”章节。
+  - **时间戳格式**: 必须精确到秒 `[YYYY-MM-DD HH:mm:ss]`。
+  - 这是你的黑匣子，不可遗漏。
+
 ---
 
 > "In the long run, we are all dead. But code can be immortal."

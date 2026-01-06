@@ -12,6 +12,78 @@
 
 ## 2. 核心架构：递归引擎 (The Recursive Engine)
 
+### 系统架构图 (System Architecture)
+
+```mermaid
+graph TD
+    subgraph "SiliconSeed (Local Process)"
+        Core[SiliconSeed Core]
+        Tools[Toolbelt]
+        IO[FileLLM Interface]
+
+        Core --> Tools
+        Core --> IO
+
+        subgraph "Tools"
+            FM[FileManager]
+            Exec[Executor]
+        end
+
+        Tools --> FM
+        Tools --> Exec
+    end
+
+    subgraph "External World"
+        FS[(File System)]
+        OS[Operating System]
+        Brain[Teacher / AI Agent]
+    end
+
+    FM -->|Read/Write| FS
+    Exec -->|Run Command| OS
+
+    IO -->|Write Request| Request[brain_request.md]
+    Brain -->|Read| Request
+    Brain -->|Write Action| Response[brain_response.md]
+    Response -->|Read| IO
+```
+
+### 共生循环时序图 (Symbiotic Loop Sequence)
+
+```mermaid
+sequenceDiagram
+    participant S as SiliconSeed
+    participant F as FileManager
+    participant L as FileLLM
+    participant B as Brain (Agent)
+
+    loop The Cycle (Live Loop)
+        Note over S: 1. Perceive (感知)
+        S->>F: listFiles()
+        F-->>S: File List
+
+        Note over S: 2. Reflect (反思)
+        S->>L: chat(Context, FileList)
+        L->>L: write(brain_request.md)
+        Note over L: Waiting for Brain...
+
+        B->>B: Read Request
+        B->>B: Decide Mutation
+        B->>L: write(brain_response.md)
+
+        L-->>S: JSON Action Command
+
+        Note over S: 3. Mutate (变异)
+        alt Action == Write
+            S->>F: writeFile()
+        else Action == Exec
+            S->>S: Executor.runCommand()
+        end
+
+        Note over S: 4. Sleep & Repeat
+    end
+```
+
 为了在资源受限的环境下逼近“硅基文明”，我们采用**精益递归 (Lean Recursion)** 架构：
 
 ### 2.1 循环逻辑 (The Loop)
