@@ -114,7 +114,7 @@ class SiliconSeed_v2 {
       // Step 3: 自然选择 (Natural Selection) - 严格的测试漏斗
       let bestCandidate = null;
       for (const candidate of candidates) {
-        // 在 Docker 容器中运行，必须通过所有现有测试 + 新生成的测试
+        // 在沙盒环境 (Sandbox) 中运行，必须通过所有现有测试 + 新生成的测试
         if (await this.sandboxRun(candidate, "strict-test-suite")) {
           bestCandidate = candidate;
         }

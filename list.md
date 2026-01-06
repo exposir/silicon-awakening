@@ -56,6 +56,12 @@
 - **User**: 感到混乱，要求建立清晰的日志文件 `list.md`。
 - **Action**: 创建本文件，梳理项目脉络。
 
+### [2026-01-07 01:24:00] 规则更新
+
+- **User**: 强制要求每执行一步必更新 `list.md`。
+- **Action**: 修改 [`.cursorrules`](file:///Users/menglingyu/My/ai-code/.cursorrules)，新增 "5. 文档协议"。
+- **Status**: **规则已生效**。
+
 ### [2026-01-07 01:26:00] 精度校向
 
 - **User**: 觉得时间记录过于粗糙，要求精确到时分秒。
@@ -68,8 +74,52 @@
 - **Action**: 在 [`README.md`](file:///Users/menglingyu/My/ai-code/README.md) 中新增 Mermaid 系统架构图和时序图。
 - **Status**: **文档已更新**。
 
-### [2026-01-07 01:24:00] 规则更新
+### [2026-01-07 01:46:00] Phase 3: 免疫系统构建
 
-- **User**: 强制要求每执行一步必更新 `list.md`。
-- **Action**: 修改 [`.cursorrules`](file:///Users/menglingyu/My/ai-code/.cursorrules)，新增 "5. 文档协议"。
-- **Status**: **规则已生效**。
+- **User**: 批准继续进入 Phase 3。
+- **Action**:
+  - 更新 `task.md`，细化测试架构任务。
+  - 启动 Jest 测试框架安装流程。
+- **Status**: **Phase 3 已启动**。
+
+### [2026-01-07 01:48:00] 免疫系统激活
+
+- **Action**:
+  - 安装 Jest & ts-jest。
+  - 编写第一个测试触手 `src/tools/FileManager.test.ts`。
+  - 运行 `npx jest`，测试通过。
+- **Status**: **免疫系统 Online (1/1 Tests Passed)**。
+
+### [2026-01-07 01:50:00] 生存法则升级
+
+- **Action**: 修改 [`.cursorrules`](file:///Users/menglingyu/My/ai-code/.cursorrules)，新增 "5. 免疫系统 (Immune System)" 章节，强制要求测试通过才能提交。
+- **Status**: **法则生效: 未经测试的代码即为病毒**。
+
+### [2026-01-07 01:52:00] 环境精简
+
+- **User**: 认为不需要 Docker，本地运行即可。
+- **Action**:
+  - 修改 [`README.md`](file:///Users/menglingyu/My/ai-code/README.md) 和 [`task.md`](file:///Users/menglingyu/.gemini/antigravity/brain/e4e00192-df5f-461a-9d1e-5fbf780f2278/task.md)，移除 Docker 相关描述。
+  - 确立以“本地沙盒”为主要执行环境。
+- **Status**: **环境依赖已简化**。
+
+### [2026-01-07 01:56:00] 铁律强化
+
+- **User**: 强调移除 Docker 后，“限制为当前文件夹”必须是铁律。
+- **Action**: 修改 [`.cursorrules`](file:///Users/menglingyu/My/ai-code/.cursorrules)，新增 "本土沙盒 (Local Sandbox)" 约束。
+- **Status**: **铁律已确立 (Ironclad Rule Established)**。
+
+### [2026-01-07 02:04:00] 文档维护
+
+- **User**: 指出 `list.md` 时间顺序错误。
+- **Action**: 重新排序 `list.md` 中的所有日志条目，确保严格的时间线一致性。
+- **Status**: **时间线已修复**。
+
+### [2026-01-07 02:08:00] Phase 3.2: 首次外科手术 (Perception)
+
+- **User**: 批准开始自我重构。
+- **Action**:
+  - 创建模块 `src/core/modules/PerceptionModule.ts`。
+  - 编写并运行测试 `src/core/modules/PerceptionModule.test.ts` (发现并修复了 `package-lock.json` 过滤 bug)。
+  - 由于通过了测试，成功将模块集成到 `SiliconSeed.ts` (v0.5)。
+- **Status**: **感知模块重构完成 (TDD Verified)**。

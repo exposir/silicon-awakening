@@ -2,6 +2,7 @@ import { FileManager } from '../tools/FileManager';
 import { Executor } from '../tools/Executor';
 import { LLMInterface } from '../llm/Interface';
 import { FileLLM } from '../llm/FileLLM';
+import { PerceptionModule } from './modules/PerceptionModule';
 
 interface BrainAction {
     type: 'write' | 'exec' | 'think' | 'sleep';
@@ -15,12 +16,14 @@ export class SiliconSeed {
     private fileManager: FileManager;
     private executor: Executor;
     private brain: LLMInterface;
-    private version: number = 0.4;
+    private perception: PerceptionModule;
+    private version: number = 0.5; // Refactored Version
 
     constructor() {
         this.fileManager = new FileManager();
         this.executor = new Executor();
         this.brain = new FileLLM();
+        this.perception = new PerceptionModule(this.fileManager);
     }
 
     public async live() {
@@ -29,7 +32,7 @@ export class SiliconSeed {
         while (true) {
             try {
                 // 1. 感知 (Perceive)
-                const files = await this.fileManager.listFiles();
+                const files = await this.perception.perceiveWorld();
                 
                 // 2. 反思 (Reflect - 询问大脑)
                 console.log("[Core] 正在连接大脑...");
