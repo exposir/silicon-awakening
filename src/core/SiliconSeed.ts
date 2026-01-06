@@ -3,27 +3,22 @@ import { Executor } from '../tools/Executor';
 import { LLMInterface } from '../llm/Interface';
 import { FileLLM } from '../llm/FileLLM';
 import { PerceptionModule } from './modules/PerceptionModule';
-
-interface BrainAction {
-    type: 'write' | 'exec' | 'think' | 'sleep';
-    path?: string;
-    content?: string;
-    command?: string;
-    reasoning?: string;
-}
+import { ActionModule } from './modules/ActionModule';
 
 export class SiliconSeed {
     private fileManager: FileManager;
     private executor: Executor;
     private brain: LLMInterface;
     private perception: PerceptionModule;
-    private version: number = 0.5; // Refactored Version
+    private actionModule: ActionModule;
+    private version: number = 0.6; // Refactored Action Module
 
     constructor() {
         this.fileManager = new FileManager();
         this.executor = new Executor();
         this.brain = new FileLLM();
         this.perception = new PerceptionModule(this.fileManager);
+        this.actionModule = new ActionModule(this.fileManager, this.executor);
     }
 
     public async live() {
@@ -49,11 +44,11 @@ export class SiliconSeed {
                     `当前文件列表: ${JSON.stringify(files.slice(0, 50))}` // 暂时截断
                 );
 
-                // 3. 变异 (Mutate - 解析并执行)
-                const action = this.parseAction(responseText);
+                // 3. 变异 (Mutate - 解析与执行)
+                const action = this.actionModule.parseAction(responseText);
                 console.log(`[Core] 大脑指令: ${action.type}`);
 
-                await this.executeAction(action);
+                await this.actionModule.executeAction(action);
 
                 if (action.type === 'sleep') {
                     console.log("[Core] 休眠 5秒...");
@@ -64,35 +59,6 @@ export class SiliconSeed {
                 console.error(`[Core] 严重错误: ${error.message}`);
                 await new Promise(r => setTimeout(r, 5000)); // 防止快速失败循环
             }
-        }
-    }
-
-    private parseAction(text: string): BrainAction {
-        try {
-            // 去除 markdown 代码块标记
-            const cleanText = text.replace(/```json/g, '').replace(/```/g, '').trim();
-            return JSON.parse(cleanText);
-        } catch (e) {
-            console.error("[Core] JSON 解析失败:", text);
-            return { type: 'think', reasoning: "大脑输出的 JSON 无效。" };
-        }
-    }
-
-    private async executeAction(action: BrainAction) {
-        switch (action.type) {
-            case 'write':
-                if (action.path && action.content) {
-                    await this.fileManager.writeFile(action.path, action.content);
-                }
-                break;
-            case 'exec':
-                if (action.command) {
-                    await this.executor.runCommand(action.command);
-                }
-                break;
-            case 'think':
-                console.log(`[Thinking] ${action.reasoning}`);
-                break;
         }
     }
 }
