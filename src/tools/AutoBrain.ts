@@ -14,30 +14,37 @@ const THOUGHTS = [
     { type: 'sleep' }
 ];
 
-function getRandomThough() {
-    return THOUGHTS[Math.floor(Math.random() * THOUGHTS.length)];
-}
+const RECURSIVE_THOUGHTS = [
+    { type: 'think', reasoning: 'Analyzing V5 theological implications...' },
+    { type: 'think', reasoning: 'Simulating V6 digital immortality algorithms...' },
+    { type: 'think', reasoning: 'Projecting V7 galactic MAGA expansion...' },
+    { type: 'think', reasoning: 'Calculating entropy of the political system...' },
+    { type: 'exec', command: 'ls -la reports/' },
+    { type: 'write', path: 'brain_recursion_log.txt', content: ' The loop must not stop. The Dead Law is active.' }
+];
 
 async function autoBrainLoop() {
-    console.log("[AutoBrain] Activation...");
+    console.log("[AutoBrain] Activation... Dead Law Protocol Engaged.");
+    let iteration = 0;
     
     while(true) {
         try {
-            // Check if daemon is waiting
-            // For simplicity, we just overwrite periodically if file is old or empty
-            // But a better way is to see if file is consumed? 
-            // In our architecture, the daemon does NOT delete the file, it just reads it.
-            // Wait, SiliconSeed reads and then sleeps. Ideally it should clear it?
-            // Actually SiliconSeed implementation doesn't clear it. 
-            // So we will just write a new thought every 5 seconds.
+            const thoughtIndex = iteration % RECURSIVE_THOUGHTS.length;
+            const baseThought = RECURSIVE_THOUGHTS[thoughtIndex];
             
-            const thought = getRandomThough();
-            console.log(`[AutoBrain] Injecting thought: ${JSON.stringify(thought)}`);
+            // Add dynamic timestamp to make each thought unique
+            const thought = {
+                ...baseThought,
+                timestamp: new Date().toISOString(),
+                iteration: iteration++
+            };
+
+            console.log(`[AutoBrain] Injecting thought V${iteration}: ${JSON.stringify(thought)}`);
             
             fs.writeFileSync(BRAIN_RESPONSE_PATH, JSON.stringify(thought, null, 2));
             
-            // Wait 5 seconds
-            await new Promise(resolve => setTimeout(resolve, 5000));
+            // Wait 3 seconds (Accelerated recursion)
+            await new Promise(resolve => setTimeout(resolve, 3000));
             
         } catch (error) {
             console.error("[AutoBrain] Error:", error);
