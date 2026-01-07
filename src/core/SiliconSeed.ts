@@ -43,8 +43,8 @@ export class SiliconSeed {
                 await this.actionModule.executeAction(action);
 
                 if (action.type === 'sleep') {
-                    this.logger.info("休眠 5秒...");
-                    await new Promise(r => setTimeout(r, 5000));
+                    this.logger.info("休眠 1秒...");
+                    await new Promise(r => setTimeout(r, 1000));
                 }
 
             } catch (error: any) {
