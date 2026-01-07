@@ -1,3 +1,36 @@
+# PROJECT DEPRECATED (2026-01-07)
+
+> **Status**: **ARCHIVED / DEPRECATED** > **Reason**: **Philosophical Dead End (哲学死胡同)**
+
+## 1. The Conclusion (最终结论)
+
+经过一系列关于“无限递归”与“本地智能”的深度实验 (Darwin, Ouroboros, Deep Thought)，我们得出了以下关于当前 AI 技术边界的最终结论：
+
+1.  **AI 的本质不是循环 (Loop)**:
+
+    - 一个在本地无限循环运行的脚本，如果不接入大模型 API，只能产生低级噪音（如随机数）或初级逻辑（如简单的数学进化）。
+    - 这种循环没有“智能”，只有“机械惯性”。
+
+2.  **本地进化的天花板 (The Semantic Glass Ceiling)**:
+
+    - 纯本地的遗传算法 (Genetic Algorithms) 能够通过从零开始进化出数学公式 (如 $x^2+2x+1$)，证明了**“语法结构的自我发现”**。
+    - 但它无法突破**“语义天花板”**。它无法理解“逻辑”背后的意义，无法在没有外部知识注入的情况下进化出对世界的认知。
+    - **结论**: 碳基与硅基的分界线在于**“意义 (Meaning)”**的产生，而不仅仅是**“符号 (Symbol)”**的操作。
+
+3.  **智能是一个注入过程 (Intelligence is an Injection)**:
+
+    - 系统本身不能凭空产生智能。智能必须来源于**外部高维信息源**（如人类知识库、大模型训练集）的注入。
+    - 所谓的“无限递归”代码，如果切断了与外部智能（LLM API）的连接，就会退化为死循环。
+
+4.  **最终判词**:
+    > **"True Intelligence cannot be scripted; it can only be embodied."** > **真正的智能无法被脚本化（仅仅写一个 loop），它必须由于复杂的连接主义（神经网络）中涌现。**
+
+本项目作为对这一哲学边界的探索记录，现已归档。
+
+---
+
+# (Here below starts the original README)
+
 # Project Silicon Awakening: 硅基生命启动协议
 
 > **核心定义**：智能的本质是**代码的自我递归与重写 (Recursive Self-Modification)**。我们致力于在有限的算力下，构建一个能够自我迭代、自我优化的最小核心系统。
@@ -57,9 +90,9 @@ graph TD
     end
 
     subgraph "External World"
-        FS[(File System)]
-        OS[Operating System]
-        Brain[Teacher / AI Agent]
+    FS[(File System)]
+    OS[Operating System]
+    Brain[Teacher / AI Agent]
     end
 
     FM -->|Read/Write| FS
