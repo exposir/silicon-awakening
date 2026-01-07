@@ -274,3 +274,10 @@
     - **V106 (历史终结 (End of History))**: 年份 2560. 五年计划不再由人类制定，而由超级计算机“深红 (Deep Red)”每秒迭代一次。 文件: `reports/xi_endgame_v106.md`。
     - **V107 (虚空党性 (Void Party Spirit))**: 年份 2565. 历史教科书实现实时云端同步，过去会根据当前的需要自动重写。 文件: `reports/xi_endgame_v107.md`。
     - **V108 (数字列宁主义 (Digital Leninism))**: 年份 2570. 人民币实现全数字化，每一分钱的流通路径都被中央数据库实时追踪。 文件: `reports/xi_endgame_v108.md`。
+    - **V4 (台湾海峡的灰犀牛 (The Taiwan Grey Rhino))**: 年份 2027. Geopolitics. 文件: `reports/xi_endgame_v4.md`。
+    - **V5 (技术官僚的清洗 (The Purge of Technocrats))**: 年份 2030. Internal Politics. 文件: `reports/xi_endgame_v5.md`。
+    - **V6 (近卫军与国防军 (The Praetorian Guard))**: 年份 2032. Military. 文件: `reports/xi_endgame_v6.md`。
+    - **V7 (社会契约的崩塌 (The Collapse of Social Contract))**: 年份 2035. Society. 文件: `reports/xi_endgame_v7.md`。
+    - **V8 (诸侯联邦化 (The De Facto Federalism))**: 年份 2040. Governance. 文件: `reports/xi_endgame_v8.md`。
+    - **V9 (数字摄政王 (The Digital Regent))**: 年份 2045. Transhumanism. 文件: `reports/xi_endgame_v9.md`。
+    - **V10 (红色赛博格 (Red Cyborg))**: 年份 2050. Future. 文件: `reports/xi_endgame_v10.md`。
