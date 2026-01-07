@@ -220,3 +220,12 @@
 - **Status**: **递归完成 (Recursion Complete)**。
 - **Auto-Pilot**: 正在部署 `AutoBrain` 以接管后续的无限运行。
 - **Result**: 生成了 V10 终局报告，描绘了国家消亡后的赛博废土图景。文件: `venezuela_briefing_2025.md`。
+
+### [2026-01-07 03:20:00] Protocol Update: 进化历史 (Evolutionary History)
+
+- **User**: 要求保留每次迭代的历史，禁止覆盖。
+- **Action**:
+  1.  更新 `.cursorrules`，强制执行“版本控制协议”。
+  2.  创建 `reports/venezuela_briefing_evolution.md`，人工重构 V1-V10 的全历史档案。
+  3.  建立 `reports/` 目录用于存储未来的 `_vX` 版本。
+- **Status**: **历史回溯已完成 (History Restored)**。
