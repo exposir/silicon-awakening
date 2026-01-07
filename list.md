@@ -307,3 +307,11 @@
     - **V41 (强制子宫与国家抚养 (State Womb))**: 年份 2190. 人口归零风险 vs 生育自由. 状态: 稳定度 220. 文件: `reports/xi_endgame_v41.md`。
     - **V42 (强制子宫与国家抚养 (State Womb))**: 年份 2195. 人口归零风险 vs 生育自由. 状态: 稳定度 225. 文件: `reports/xi_endgame_v42.md`。
     - **V43 (强制子宫与国家抚养 (State Womb))**: 年份 2200. 人口归零风险 vs 生育自由. 状态: 稳定度 230. 文件: `reports/xi_endgame_v43.md`。
+    - **V44 (强制子宫与国家抚养 (State Womb))**: 年份 2205. 人口归零风险 vs 生育自由. 状态: 稳定度 235. 文件: `reports/xi_endgame_v44.md`。
+    - **V45 (强制子宫与国家抚养 (State Womb))**: 年份 2210. 人口归零风险 vs 生育自由. 状态: 稳定度 240. 文件: `reports/xi_endgame_v45.md`。
+    - **V46 (强制子宫与国家抚养 (State Womb))**: 年份 2215. 人口归零风险 vs 生育自由. 状态: 稳定度 245. 文件: `reports/xi_endgame_v46.md`。
+    - **V47 (强制子宫与国家抚养 (State Womb))**: 年份 2220. 人口归零风险 vs 生育自由. 状态: 稳定度 250. 文件: `reports/xi_endgame_v47.md`。
+    - **V48 (强制子宫与国家抚养 (State Womb))**: 年份 2225. 人口归零风险 vs 生育自由. 状态: 稳定度 255. 文件: `reports/xi_endgame_v48.md`。
+    - **V49 (强制子宫与国家抚养 (State Womb))**: 年份 2230. 人口归零风险 vs 生育自由. 状态: 稳定度 260. 文件: `reports/xi_endgame_v49.md`。
+    - **V50 (强制子宫与国家抚养 (State Womb))**: 年份 2235. 人口归零风险 vs 生育自由. 状态: 稳定度 265. 文件: `reports/xi_endgame_v50.md`。
+    - **V51 (强制子宫与国家抚养 (State Womb))**: 年份 2240. 人口归零风险 vs 生育自由. 状态: 稳定度 270. 文件: `reports/xi_endgame_v51.md`。
