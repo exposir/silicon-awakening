@@ -1,20 +1,24 @@
 import { ActionModule } from './ActionModule';
 import { FileManager } from '../../tools/FileManager';
 import { Executor } from '../../tools/Executor';
+import { Logger } from '../../tools/Logger';
 
 // Mock Dependencies
 jest.mock('../../tools/FileManager');
 jest.mock('../../tools/Executor');
+jest.mock('../../tools/Logger');
 
 describe('ActionModule', () => {
     let actionModule: ActionModule;
     let mockFileManager: jest.Mocked<FileManager>;
     let mockExecutor: jest.Mocked<Executor>;
+    let mockLogger: jest.Mocked<Logger>;
 
     beforeEach(() => {
         mockFileManager = new FileManager() as jest.Mocked<FileManager>;
         mockExecutor = new Executor() as jest.Mocked<Executor>;
-        actionModule = new ActionModule(mockFileManager, mockExecutor);
+        mockLogger = new Logger('Test') as jest.Mocked<Logger>;
+        actionModule = new ActionModule(mockFileManager, mockExecutor, mockLogger);
     });
 
     test('should parse valid JSON correctly', () => {
@@ -44,7 +48,17 @@ describe('ActionModule', () => {
 
     test('should execute exec action', async () => {
         const action = { type: 'exec', command: 'ls -la' } as const;
+        
+        // Mock success return
+        mockExecutor.runCommand.mockResolvedValue({ 
+            success: true, 
+            stdout: 'file1', 
+            stderr: '' 
+        });
+
         await actionModule.executeAction(action);
+        
         expect(mockExecutor.runCommand).toHaveBeenCalledWith('ls -la');
+        expect(mockLogger.info).toHaveBeenCalledWith(expect.stringContaining('[EXEC OUTPUT]'));
     });
 });
